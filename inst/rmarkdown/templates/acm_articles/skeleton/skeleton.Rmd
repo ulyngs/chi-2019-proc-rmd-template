@@ -17,6 +17,7 @@ short-title: CHI Papers With R Markdown
 titlenote: Who needs titlenotes anyway?
 subtitle: "Certainly can't recall the last time I used subtitlenotes, but it's good to have the option."
 subtitlenote: Especially not subtitlenotes.
+short-authors: B. Trovato et al.
 author:
   - name: Ben Trovato
     authornote: Dr. Trovato insisted his name be first.
@@ -78,6 +79,7 @@ anonymous: false
 output:
   bookdown::pdf_book:
     template: sample-sigchi.tex 
+abstract: "This is a guided illustration of how to write a full paper for CHI, using the official ACM \\LaTeX\\ templates, as updated in 2018."  #LaTeX syntax needs to be escaped with an extra '\'.
 ---
 
 ## Introduction
