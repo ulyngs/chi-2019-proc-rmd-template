@@ -2,7 +2,8 @@
 title: "Untitled"
 author: "Your Name"
 review: true
-anonymous: true
+anonymous: false
+copyright: acmcopyright #otherwise e.g. none, acmlicensed, etc.
 output:
   bookdown::pdf_book:
     template: sample-sigchi.tex
