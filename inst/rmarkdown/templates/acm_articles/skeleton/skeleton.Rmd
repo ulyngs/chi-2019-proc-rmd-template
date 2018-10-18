@@ -76,6 +76,9 @@ author:
     email: jpkumquat\@consortium.net
 abstract: This is a guided illustration of how to write a full paper for CHI, using the official ACM \LaTeX\ templates, as updated in 2018. #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
 keywords: ACM proceedings, \LaTeX, text tagging
+teaser-figure: sampleteaser.pdf
+teaser-caption: Write your teaser caption here
+teaser-label: teaser
 review: true
 anonymous: false
 output:

@@ -105,12 +105,13 @@ $abstract$
 
 \keywords{$keywords$}
 
-\begin{teaserfigure}
-  \includegraphics[width=\textwidth]{sampleteaser}
-  \caption{This is a teaser}
-  \label{fig:teaser}
+$if(teaser-figure)$
+  \begin{teaserfigure}
+    \includegraphics[width=\textwidth]{$teaser-figure$}
+    \caption{$teaser-caption$}
+  \label{fig:$teaser-label$}
 \end{teaserfigure}
-
+$endif$
 
 \maketitle
 
