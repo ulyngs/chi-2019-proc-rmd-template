@@ -1,6 +1,8 @@
 ---
 title: "Untitled"
 author: "Your Name"
+review: true
+anonymous: true
 output:
   bookdown::pdf_book:
     template: sample-sigchi.tex
