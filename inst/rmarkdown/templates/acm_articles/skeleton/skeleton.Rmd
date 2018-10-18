@@ -12,17 +12,72 @@ acm-year: 1997
 acm-price: 15.00
 
 #paper metadata
-title: Writing SIG Proceedings Papers With R Markdown
-#titlenote: Only if you need one 
-subtitle: Using the ACM LaTeX template
-#subtitlenote: You almost certainly don't need one
-author: "Your Name"
+title: Writing CHI Proceedings Papers With R Markdown
+short-title: CHI Papers With R Markdown
+titlenote: Who needs titlenotes anyway?
+subtitle: "Certainly can't recall the last time I used subtitlenotes, but it's good to have the option."
+subtitlenote: Especially not subtitlenotes.
+author:
+  - name: Ben Trovato
+    authornote: Dr. Trovato insisted his name be first.
+    email: trovato\@corporation.com  #NOTE: you must escape the @
+    affiliation:
+      institution: Institute for Clarity in Documentation
+      city: Dublin
+      state: Ohio
+      postcode: 43017-6221
+  - name: G.K.M. Tobin
+    authornote: The secretary disavows any knowledge of this author's actions.
+    affiliation:
+      institution: Institute for Clarity in Documentation
+      city: Dublin
+      state: Ohio
+      postcode: 43017-6221
+    email: webmaster\@marysville-ohio.com
+  - name: Lars Thørväld
+    authornote: This author is the one who did all the really hard work.
+    affiliation:
+      institution: The Thørväld Group
+      city: Hekla
+      country: Iceland
+    email: larst\@affiliation.org
+  - name: Valerie Béranger
+    affiliation:
+      institution: Inria Paris-Rocquencourt
+      city: Rocquencourt
+      country: France
+  - name: Aparna Patel
+    affiliation:
+      institution: Rajiv Gandhi University
+      city: Doimukh
+      state: Arunachal Pradesh
+      country: India
+  - name: Huifen Chan
+    affiliation:
+      institution: Tsinghua University
+      city: Haidian Qu
+      state: Beijing Shi
+      country: China
+  - name: Charles Palmer
+    affiliation:
+      institution: Palmer Research Laboratories
+      city: San Antonio
+      state: Texas
+      country: China
+    email: cpalmer\@prl.com
+  - name: John Smith
+    affiliation:
+      institution: The Thørväld Group
+    email: jsmith\@affiliation.org
+  - name: Julius P. Kumquat
+    affiliation:
+      institution: The Kumquat Consortium
+    email: jpkumquat\@consortium.net
 review: true
 anonymous: false
-
 output:
   bookdown::pdf_book:
-    template: sample-sigchi.tex
+    template: sample-sigchi.tex 
 ---
 
 ## Introduction
