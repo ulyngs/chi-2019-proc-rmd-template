@@ -13,10 +13,10 @@ acm-price: 15.00
 
 #paper metadata
 title: Writing CHI Proceedings Papers With R Markdown
+subtitle: Using the 2018 ACM \LaTeX\ template
 short-title: CHI Papers With R Markdown
 titlenote: Who needs titlenotes anyway?
-subtitle: "Certainly can't recall the last time I used subtitlenotes, but it's good to have the option."
-subtitlenote: Especially not subtitlenotes.
+subtitlenote: "Certainly can't recall the last time I used subtitlenotes, but it's good to have the option."
 short-authors: B. Trovato et al.
 author:
   - name: Ben Trovato
@@ -74,16 +74,13 @@ author:
     affiliation:
       institution: The Kumquat Consortium
     email: jpkumquat\@consortium.net
+abstract: This is a guided illustration of how to write a full paper for CHI, using the official ACM \LaTeX\ templates, as updated in 2018. #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
+keywords: ACM proceedings, \LaTeX, text tagging
 review: true
 anonymous: false
 output:
-  bookdown::pdf_book:
+  bookdown::pdf_document2:
     template: sample-sigchi.tex 
-abstract: "This is a guided illustration of how to write a full paper for CHI, using the official ACM \\LaTeX\\ templates, as updated in 2018."  #LaTeX syntax needs to be escaped with an extra '\'.
+#NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts') directly in sample-sigchi.tex - it's too messy to do from the YAML in here.
 ---
 
-## Introduction
-
-## Analysis
-
-## Conclusions
