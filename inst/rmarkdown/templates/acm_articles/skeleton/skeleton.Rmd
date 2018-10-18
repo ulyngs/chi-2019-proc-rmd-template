@@ -1,9 +1,22 @@
 ---
+#conference and copyright metadata
+copyright: acmcopyright #otherwise e.g. none, acmlicensed, etc.
+copyright-year: 2016
+DOI: 10.475/123_4
+ISBN: 123-4567-24-567/08/06
+conference: ACM Woodstock conference
+conference-short: WOODSTOCK'97
+conference-date: July 1997
+conference-location: El Paso, Texas USA
+acm-year: 1997
+acm-price: 15.00
+
+#paper metadata
 title: "Untitled"
 author: "Your Name"
 review: true
 anonymous: false
-copyright: acmcopyright #otherwise e.g. none, acmlicensed, etc.
+
 output:
   bookdown::pdf_book:
     template: sample-sigchi.tex
