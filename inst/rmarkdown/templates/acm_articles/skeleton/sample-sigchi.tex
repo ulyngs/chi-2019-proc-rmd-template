@@ -30,12 +30,19 @@
 
 
 \begin{document}
-\title{SIG Proceedings Paper in LaTeX Format}
-\titlenote{Produces the permission block, and
-  copyright information}
-\subtitle{Extended Abstract}
-\subtitlenote{The full version of the author's guide is available as
-  \texttt{acmart.pdf} document}
+\title{$title$}
+
+$if(titlenote)$
+\titlenote{$titlenote$}
+$endif$
+
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+
+$if(subtitlenote)$
+\subtitlenote{$subtitlenote$}
+$endif$
 
 \author{Ben Trovato}
 \authornote{Dr.~Trovato insisted his name be first.}

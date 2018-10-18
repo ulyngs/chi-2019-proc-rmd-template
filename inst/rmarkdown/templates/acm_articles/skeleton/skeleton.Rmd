@@ -12,7 +12,10 @@ acm-year: 1997
 acm-price: 15.00
 
 #paper metadata
-title: "Untitled"
+title: Writing SIG Proceedings Papers With R Markdown
+#titlenote: Only if you need one 
+subtitle: Using the ACM LaTeX template
+#subtitlenote: You almost certainly don't need one
 author: "Your Name"
 review: true
 anonymous: false
