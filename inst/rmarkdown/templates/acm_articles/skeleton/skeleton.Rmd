@@ -76,7 +76,7 @@ author:
     email: jpkumquat\@consortium.net
 abstract: This is a guided illustration of how to write a full paper for CHI, using the latest official ACM \LaTeX\ templates [Version 1.55, September 11, 2018](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
 keywords: ACM proceedings, \LaTeX, text tagging
-teaser-figure: sampleteaser.pdf
+teaser-figure: figures/sampleteaser.pdf
 teaser-caption: Write your teaser caption here
 teaser-label: teaser
 review: true
@@ -193,50 +193,46 @@ data %>%
   
 ```
 
-\subsection{Figures}
+## Figures
+Figures we similarly include via code chunks. We can just include arbitrary images, as in Figure \@ref(fig:static-image). If you don't give it a caption in the chunk options, it won't float.
 
-Like tables, figures cannot be split across pages; the best placement
-for them is typically the top or the bottom of the page nearest their
-initial cite.  To ensure this proper ``floating'' placement of
-figures, use the environment \textbf{figure} to enclose the figure and
-its caption.
+```{r static-image, echo=FALSE, fig.cap="Here's a little pretty fly."}
+knitr::include_graphics("figures/fly.eps")
+```
 
-This sample document contains examples of \texttt{.eps} files to be
-displayable with \LaTeX.  If you work with pdf\LaTeX, use files in the
-\texttt{.pdf} format.  Note that most modern \TeX\ systems will convert
-\texttt{.eps} to \texttt{.pdf} for you on the fly.  More details on
-each of these are found in the \textit{Author's Guide}.
+```{r static-image-resized, echo=FALSE, out.height='1in', out.width='1in', fig.cap="A sample black and white graphic that has been resized with the \\texttt{out.height} and \\texttt{out.width} chunk options."}
+knitr::include_graphics("figures/fly.eps")
+```
 
-\begin{figure}
-\includegraphics{fly}
-\caption{A sample black and white graphic.}
-\end{figure}
+At the moment, if you need to style text in the caption, or include references in the captions, you need to use \LaTeX\ rather than markdown syntax to do so. As the figure caption is a string, you must use another `\` to escape the beginning `\` when doing so, as I did in Figure \@ref(fig:static-image-resized).
 
-\begin{figure}
-\includegraphics[height=1in, width=1in]{fly}
-\caption{A sample black and white graphic
-that has been resized with the \texttt{includegraphics} command.}
-\end{figure}
+Again, however, the power of using R Markdown derives from the fact that you can include e.g. plots that are dynamically generated from the underlying data at the point of compiling the document. So we might want to make some visualisation of the basket data, as in Figure \@ref(fig:basket-plot). Note that we restrict its size to the column width.
 
+```{r basket-plot, echo=FALSE, message=FALSE, fig.cap="Total number of goals by the top 3 players in made-up basketball season", out.width='0.98\\columnwidth'}
+data %>%
+  group_by(Player) %>%
+  summarise(total_goals = sum(goals)) %>%
+  arrange(desc(total_goals)) %>%
+  head(3) %>%
+  ggplot() +
+    geom_bar(aes(x = Player, y = total_goals), stat = "identity") +
+    labs(x = "", y = "Total goals") + 
+    theme_minimal()
+```
 
-As was the case with tables, you may want a figure that spans two
-columns.  To do this, and still to ensure proper ``floating''
-placement of tables, use the environment \textbf{figure*} to enclose
-the figure and its caption.  And don't forget to end the environment
-with \textbf{figure*}, not \textbf{figure}!
-
-\begin{figure*}
-\includegraphics{flies}
-\caption{A sample black and white graphic
-that needs to span two columns of text.}
-\end{figure*}
+As was the case with tables, you may want a figure that spans two columns.  To do this, set the environment to `figure*` by using `fig.env = 'figure*'` in the chunk options. If your image is large, restrict its width to the text width with `out.width='0.98\\textwidth'`.
 
 
-\begin{figure}
-\includegraphics[height=1in, width=1in]{rosette}
-\caption{A sample black and white graphic that has
-been resized with the \texttt{includegraphics} command.}
-\end{figure}
+```{r basket-plot-wide, echo=FALSE, message=FALSE, fig.cap="Distribution of goals scored by game for all recorded player in made-up basketball season", fig.env = 'figure*', out.width='0.98\\textwidth'}
+data %>%
+  ggplot() +
+    geom_boxplot(aes(y = goals, x = Player)) +
+    geom_point(aes(y = goals, x = Player), position = "jitter") +
+    coord_flip() +
+    labs(x = "", y = "Goals in game") +
+    theme_minimal()
+```
+
 
 \subsection{Theorem-like Constructs}
 
