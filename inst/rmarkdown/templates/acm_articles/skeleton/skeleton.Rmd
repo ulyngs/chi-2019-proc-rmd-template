@@ -74,7 +74,7 @@ author:
     affiliation:
       institution: The Kumquat Consortium
     email: jpkumquat\@consortium.net
-abstract: This is a guided illustration of how to write a full paper for CHI, using the official ACM \LaTeX\ templates, as updated in 2018. #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
+abstract: This is a guided illustration of how to write a full paper for CHI, using the latest official ACM \LaTeX\ templates [Version 1.55, September 11, 2018](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
 keywords: ACM proceedings, \LaTeX, text tagging
 teaser-figure: sampleteaser.pdf
 teaser-caption: Write your teaser caption here
@@ -84,77 +84,56 @@ anonymous: false
 output:
   bookdown::pdf_document2:
     template: sample-sigchi.tex 
+    keep_tex: true
+    citation_package: natbib
 #NOTE: to update the CCSXML (i.e. the code to generate the 'CCS Concepts') directly in sample-sigchi.tex - it's too messy to do from the YAML in here.
 ---
 
-# Introduction
-The *proceedings* are the records of a conference.^[This is a footnote] ACM seeks to give these conference by-products a uniform, high-quality appearance. To do this, ACM has some rigid requirements for the format of the proceedings documents: there is a specified format (balanced double columns), a specified set of fonts (Arial or Helvetica and Times Roman) in certain specified sizes, a specified live area, centered on the page, specified size of margins, specified column width and gutter size.
+# Introduction{-}
+Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientific papers makes our work more transparent and reproducible. It also reduces the risk of errors, because we can dynamically insert tables, figures, and summary statistics directly from the data they are generated from, rather than transferring results manually from statistical software to manuscript.
+
+This example illustrates how to use the latest ACM \LaTeX\ templates (Version 1.55, from September 11, 2018) in tandem with R Markdown to write papers for the CHI conference, in the CHI proceedings format. In this example, I mostly follow the content in the sample-sigchi.tex example from the ACM template, illustrating how to create this content through the R Markdown workflow.
+
+# Paper meta data
+We set meta data of the paper (copyright, authors, keywords, title, keywords, optional teaser figure) in the YAML header of the .Rmd file. This is in the form of simple `key: value` pairs, for example `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF, the information in the YAML header is plugged into the LaTeX template (which is itself specified in the YAML header with `template: sample-sigchi.tex`), for example `\title{$title$}`.
+
+Note the sole **exception**: The CCS Concepts would be rather messy to insert from the YAML header, so I suggest you insert this directly into the sample-sigchi.tex template.
 
 # The Body of The Paper
-Typically, the body of a paper is organized into a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and even smaller sections.  The command `\section` that precedes this paragraph is part of such a hierarchy.^[This is a footnote.] \LaTeX\ handles the numbering and placement of these headings for you, when you use the appropriate heading commands around the titles of the headings.  If you want a sub-subsection or smaller part to be unnumbered in your output, simply append an asterisk to the command name. Examples of both numbered and unnumbered headings will appear throughout the balance of this sample document.
+Typically, the body of a paper is organized into a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and even smaller sections.  Whereas in \LaTeX\ you'd use the command `\section` for main sections, in R Markdown you simply use `#`, as in `# The Body of The Paper`. For subsections, or sub-subsections, use more hashes, as in `## This Become a Subsection`, and `#### This Becomes a Paragraph Heading`.^[By the way, this is how to insert footnotes.] 
 
-Because the entire article is contained in the **document** environment, you can indicate the start of a new paragraph with a blank line in your input file; that is why this sentence forms a separate paragraph.
+The compilation to PDF still is done via \LaTeX\, which handles their numbering and placement. If you want some section to be unnumbered in the output, add `{-}` after the section name, as in `# Unnumbered Section{-}`.
+
+Indicate the start of a new paragraph with a blank line in your input file; that is why this sentence forms a separate paragraph.
+This line, however, does not form a separate paragraph.
 
 ## Type Changes and *Special* Characters
 
-We have already seen several typeface changes in this sample.  You can indicate italicized words or phrases in your text with the command `\textit`; emboldening with the command `\textbf` and typewriter-style (for instance, for computer code) with `\texttt`. But remember, you do not have to indicate typestyle changes when such changes are part of
-the *structural* elements of your article; for instance, the heading of this subsection will be in a sans serif^[Another footnote here. Let's make this a rather long one to see how it looks.] typeface, but that is handled by the document class file.
-Take care with the use of^[Another footnote.] the curly braces in typeface changes; they mark the beginning and end ofthe text that is to be in the different typeface.
-
-You can use whatever symbols, accented characters, or non-English characters you need anywhere in your document; you can find a complete list of what is available in the *\LaTeX\ User's Guide* [@Lamport:LaTeX].
+Make words or phrases *italicized* by surrounding them with a single \*; **embolden** them by surrounding them with \*\***two**\*\*. `Typewriter-style` (for instance, for computer code) you create by  surrounding text with `` `backticks` ``.^[Another footnote here. Let's make this a rather long one to see how it looks.]
 
 ## Math Equations
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of
-the three are discussed in the next sections.
+You may want to display math equations in three distinct styles: inline, numbered or non-numbered display.  Each of the three are discussed in the next sections. You can use usual \LaTeX\ syntax directly, 
 
 ### Inline (In-text) Equations
-A formula that appears in the running text is called an
-inline or in-text formula.  It is produced by the
-**math** environment, which can be
-invoked with the usual \texttt{{\char'134}begin\,\ldots{\char'134}end}
-construction or with the short form \texttt{\$\,\ldots\$}. You
-can use any of the symbols and structures,
-from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a
-few examples of in-text equations in context. Notice how
-this equation:
-\begin{math}
-  \lim_{n\rightarrow \infty}x=0
-\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
+A formula that appears in the running text is called an inline or in-text formula.  It is produced by the
+**math** environment, which can be invoked by surrounding text with dollar signs: \$. You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \LaTeX\. For example, here's a nice equation inline: $\lim_{n\rightarrow \infty}x=0$. If you're writing in RStudio, you can even hover over it to see the rendered output displayed!
 
-\subsubsection{Display Equations}
-A numbered display equation---one set off by vertical space from the
-text and centered horizontally---is produced by the \textbf{equation}
-environment. An unnumbered display equation is produced by the
-\textbf{displaymath} environment.
-
-Again, in either environment, you can use any of the symbols
-and structures available in \LaTeX\@; this section will just
-give a couple of examples of display equations in context.
-First, consider the equation, shown as an inline equation above:
+### Display Equations
+A numbered display equation---one set off by vertical space from the text and centered horizontally---is produced by using \LaTeX\ syntax directly to put the content in an `equation` environment. So here's that nice equation from above:
 \begin{equation}
-  \lim_{n\rightarrow \infty}x=0
-\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}
-  \sum_{i=0}^{\infty} x + 1
-\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}
-  \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
-\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
+\lim_{n\rightarrow \infty}x=0
+\end{equation}.
 
-\subsection{Citations}
-Citations to articles~\cite{bowman:reasoning,
-clark:pct, braams:babel, herlihy:methodology},
-conference proceedings~\cite{clark:pct} or maybe
-books \cite{Lamport:LaTeX, salas:calculus} listed
+In fact, you can use any arbitrary \LaTeX\ syntax directly in your .Rmd document.
+
+To make an unnumbered display equation, just surround the expression with two dollar signs:
+$$
+\lim_{n\rightarrow \infty}x=0
+$$
+
+## Citations
+Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference proceedings [@clark:pct] or maybe
+books [@Lamport:LaTeX; @salas:calculus] listed
 in the Bibliography section of your
 article will occur throughout the text of your article.
 You should use BibTeX to automatically produce this bibliography;
