@@ -136,23 +136,11 @@ Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference p
 
 For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, we write `[@Cohen07]`[@Cohen07]. If we drop the the `[`s, we get the actual name of the authors, in addition to the citation: @Cohen07. See [this short guide](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 
-\subsection{Tables}
-Because tables cannot be split across pages, the best
-placement for them is typically the top of the page
-nearest their initial cite.  To
-ensure this proper ``floating'' placement of tables, use the
-environment \textbf{table} to enclose the table's contents and
-the table caption.  The contents of the table itself must go
-in the \textbf{tabular} environment, to
-be aligned properly in rows and columns, with the desired
-horizontal and vertical rules.  Again, detailed instructions
-on \textbf{tabular} material
-are found in the \textit{\LaTeX\ User's Guide}.
+## Tables
+<!--Because tables cannot be split across pages, the best placement for them is typically the top of the page nearest their initial cite. To ensure this proper ``floating'' placement of tables, use the environment \textbf{table} to enclose the table's contents and the table caption.  The contents of the table itself must go in the \textbf{tabular} environment, to be aligned properly in rows and columns, with the desired horizontal and vertical rules.  Again, detailed instructions on \textbf{tabular} material are found in the \textit{\LaTeX\ User's Guide}.-->
+<!-- Immediately following this sentence is the point at which Table~\ref{tab:freq} is included in the input file; compare the placement of the table here with the table in the printed output of this document. -->
 
-Immediately following this sentence is the point at which
-Table~\ref{tab:freq} is included in the input file; compare the
-placement of the table here with the table in the printed
-output of this document.
+For tables, you could use \LaTeX\ syntax directly. This might be ok if your table is using \LaTeX\ syntax in there:
 
 \begin{table}
   \caption{Frequency of Special Characters}
@@ -169,39 +157,41 @@ output of this document.
 \end{tabular}
 \end{table}
 
-To set a wider table, which takes up the whole width of the page's
-live area, use the environment \textbf{table*} to enclose the table's
-contents and the table caption.  As with a single-column table, this
-wide table will ``float'' to a location deemed more desirable.
-Immediately following this sentence is the point at which
-Table~\ref{tab:commands} is included in the input file; again, it is
-instructive to compare the placement of the table here with the table
-in the printed output of this document.
+However, R Markdown shines in letting you read in your data and then automatically insert that into LaTeX tables, bypassing errors introduced via transferring data manually into a table. We can do that by inserting chunks (with three backticks) that runs code (could be R, Python, or something else), which is executed at the point of compilation and inserted into our final document:
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+```{r basket-data, echo=FALSE, message=FALSE}
+data <- read_csv("fakeBasketData.csv")
+data %>%
+  head() %>%
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "The first 5 rows of some made-up basket data.")
+```
+
+We can reference Table \@ref(tab:basket-data) with `\@ref(fig:basket-data)`.
+
+Rather than saving out separate steps of the results, we can also do transformations of the same data and display it (see Table \@ref(tab:basket-summary):
+
+```{r basket-summary, echo=FALSE, message=FALSE}
+data %>%
+  group_by(Player) %>%
+  summarise(`Total goals scored` = sum(goals)) %>%
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "Summary statistics of goals scored by top players in made-up basketball season.")
+```
 
 
-\begin{table*}
-  \caption{Some Typical Commands}
-  \label{tab:commands}
-  \begin{tabular}{ccl}
-    \toprule
-    Command &A Number & Comments\\
-    \midrule
-    \texttt{{\char'134}author} & 100& Author \\
-    \texttt{{\char'134}table}& 300 & For tables\\
-    \texttt{{\char'134}table*}& 400& For wider tables\\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-% end the environment with {table*}, NOTE not {table}!
+To set a wider table, which takes up the whole width of the page's live area, we put it in a `\table*` environment, like so (see Table \@ref(tab:basket-wide))
 
-It is strongly recommended to use the package booktabs~\cite{Fear05}
-and follow its main principles of typography with respect to tables:
-\begin{enumerate}
-\item Never, ever use vertical rules.
-\item Never use double rules.
-\end{enumerate}
-It is also a good idea not to overuse horizontal rules.
-
+```{r basket-summary-wide, echo=FALSE, message=FALSE}
+data %>%
+  group_by(Player) %>%
+  summarise(`Total goals scored` = sum(goals),
+             `Goals per game` = `Total goals scored` / n()) %>%
+  knitr::kable(format = "latex", booktabs = TRUE, caption = "Bigger display of more summary statistics of goals scored by top players in made-up basketball season.", table.env = 'table*')
+  
+```
 
 \subsection{Figures}
 
