@@ -10,7 +10,7 @@ This R package makes it easy, by providing a ready-made .Rmd template with YAML 
 
 ## Installation
 ``` r
-# The package isn't ready CRAN yet - you can install the development version from GitHub:
+# The package isn't on CRAN yet - install the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("ulyngs/chi-proc-rmd-template")
 ```
