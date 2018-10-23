@@ -92,12 +92,12 @@ output:
 # Introduction{-}
 Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientific papers makes your work more transparent and reproducible. It also reduces the risk of errors, because you can dynamically insert tables, figures, and summary statistics directly from the data they are generated from insted of transferring results manually from statistical software to manuscript.
 
-This example illustrates how to use the latest ACM \LaTeX\ templates (Version 1.55, from September 11, 2018) with R Markdown to write papers for the [CHI conference](https://sigchi.org), in the CHI proceedings format. This content in this example is adjusted from the content included in the sample-sigchi.tex template included with the ACM template, in order to illustrate how to create the same content through the R Markdown workflow as well as to showcase the additional features it enables.
+This example illustrates how to use the latest ACM \LaTeX\ templates (Version 1.55, from September 11, 2018) with R Markdown to write papers for the [CHI conference](https://sigchi.org), in the CHI proceedings format. The content in this example is adapted and adjusted from content in the **sample-sigchi.tex** template included with the ACM template, to illustrate how to create the same content through the R Markdown workflow as well as to showcase additional features made possible by R Markdown.
 
 # Paper meta data
-Set meta data for the paper (copyright, authors, keywords, title, keywords, optional teaser figure) in the YAML header of the .Rmd file in which you write the manuscript. This is done in the form of simple `key: value` pairs, e.g. `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF (in RStudio, just click the 'Knit' button), the information in the YAML header is plugged into the LaTeX template (the template is specified in the YAML header with `template: sample-sigchi.tex`). If you take a look at the sample-sigchi.tex template, you will see e.g. `\title[$short-title$]{$title$}` - anything in this template between dollar signs are interpreted as a variable that should be looked for in the YAML header and plugged into the \LaTeX\ template when knitting to pdf.
+Set meta data (copyright, authors, keywords, title, keywords, optional teaser figure, etc.) in the YAML header of the .Rmd file in which you write the manuscript. This is done in the form of `key: value` pairs, e.g. `title: Writing CHI Proceedings Papers With R Markdown`. When compiling to a PDF (in RStudio, just click the 'Knit' button), the information in the YAML header is plugged into the CHI Proceedings \LaTeX\ template (specified in the YAML header with `template: sample-sigchi.tex`). If you take a look at this template file, you will see e.g. `\title[$short-title$]{$title$}` - things between dollar signs are interpreted as a variable to be searched for in the YAML header and plugged into the template when generating a PDF.
 
-**Note the sole exception for adding paper meta data**: The CCS Concepts are messy to insert from the YAML header, so you should manually insert this into `sample-sigchi.tex`.
+**Note the sole exception for adding paper meta data**: The CCS Concepts are messy to insert from the YAML header, so you should manually insert this into either the template `sample-sigchi.tex` or the **.tex** file generated for your manuscript when you knit to PDF.
 
 # The Body of The Paper
 Typically, the body of a paper has a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and paragraphs. Whereas in \LaTeX\ you use the command `\section` for main sections, in R Markdown you simply use `#`, as in `# The Body of The Paper`. For subsections, or sub-subsections, use additional hashes, as in `## This Become a Subsection`, and `#### This Becomes a Paragraph Heading`.^[By the way, this is how to insert footnotes.] 
@@ -108,16 +108,15 @@ Indicate the start of a new paragraph with a blank line in your input file; that
 This line, however, does not form a separate paragraph.
 
 ## Type Changes and *Special* Characters
-
 Make words or phrases *italicized* by surrounding them with a single \*; **embolden** them by surrounding them with \*\***two**\*\*. `Typewriter-style` (for instance, for computer code) you create by surrounding text with `` `backticks` ``.^[Another footnote here. Let's make this a rather long one to see how it looks.]
 
 ## Citations
-Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference proceedings [@clark:pct] or maybe books [@Lamport:LaTeX; @salas:calculus] listed in the Bibliography section of your article will occur throughout the text of your article. You should use BibTeX to automatically produce this bibliography; you simply need to insert the citation command: \@ followed by the citation key. The key is a short reference you invent to uniquely identify each work. This identifying key is included with each item in the `.bib` file for your article.
+Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference proceedings [@clark:pct] or maybe books [@Lamport:LaTeX; @salas:calculus] listed in the Bibliography section of your article will occur throughout the text of your article. To insert a reference in the R Markdown syntax, type \@ followed by the citation key. The key is a short reference uniquely identifying each entry in in the `.bib` file for your article, in which your references are listed in [BibTex](http://www.bibtex.org) format.
 
-For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, we write `[@Cohen07]`[@Cohen07]. If we drop the `[]`'s, we get the actual name of the authors, in addition to the citation: @Cohen07. See [this short guide for more](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, write `[@Cohen07]`[@Cohen07]. If you drop the `[]`'s, you get author names, as well as the citation: @Cohen07. See [this short guide for more](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 
 # Dynamic reporting
-One of the most important benefits of writing in R Markdown (aside from being able to compile to other formats than PDF, such as HTML or even Microsoft Word), is the ability to insert results dynamically into your manuscript using code chunks or inline code. This means that you can do analyses **directly** in your manuscript or, probably better, read analysis result file(s) or summaries directly into your manuscript and refer to them directly.
+One of the most important benefits of writing in R Markdown (aside from being able to compile to other formats than PDF, such as HTML or even Microsoft Word), is the ability to insert results dynamically into your manuscript using code chunks or inline code. This means that you can do analyses **directly** in your manuscript or, probably better, read file(s) with data, summaries, or results directly into your manuscript and refer to them dynamically.
 
 This is important for two (related) reasons:
 1. You avoid initial manual transfer of results from statistical software to manuscript, which reduces the risk of error.
@@ -151,7 +150,7 @@ library(tidyverse)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
-For illustration purposes, let's also read in a made-up data set of goals scored by basketball players: 
+You might read in a made-up data set of goals scored by basketball players like so (the chunk option `include=FALSE` means we don't want this chunk to have any output in the manuscript):
 
 ````
 ```{ r, include=FALSE}
@@ -166,12 +165,9 @@ mean(data$goals)
 ```
 
 ## Inline results
-We can use inline code to dynamically report properties of this data set. For example, there are a total of `r nrow(data)` observations of goals scored. The mean number of goals made by any player in a given game is: `r mean(data$goals)`.
+We can use inline code to dynamically report properties of this data set. For example, "there are a total of `r nrow(data)` observations of goals scored. The mean number of goals made by any player in a given game is: `r mean(data$goals)`".
 
 ## Tables
-<!--Because tables cannot be split across pages, the best placement for them is typically the top of the page nearest their initial cite. To ensure this proper ``floating'' placement of tables, use the environment \textbf{table} to enclose the table's contents and the table caption.  The contents of the table itself must go in the \textbf{tabular} environment, to be aligned properly in rows and columns, with the desired horizontal and vertical rules.  Again, detailed instructions on \textbf{tabular} material are found in the \textit{\LaTeX\ User's Guide}.-->
-<!-- Immediately following this sentence is the point at which Table~\ref{tab:freq} is included in the input file; compare the placement of the table here with the table in the printed output of this document. -->
-
 For tables, you could use \LaTeX\ syntax directly. This might be useful if your table itself contains \LaTeX\ syntax, as in Figure \ref{tab:freq}.
 
 \begin{table}
@@ -189,7 +185,7 @@ For tables, you could use \LaTeX\ syntax directly. This might be useful if your 
 \end{tabular}
 \end{table}
 
-However, the power of writing in R Markdown is that you can read in data and automatically create corresponding LaTeX tables, which reduces the risk of introducing errors by creating tables manually. The easiest way is probably to use [kable function](https://rdrr.io/cran/knitr/man/kable.html) For example, Table \@ref(tab:basket-data) shows the first 5 rows in our basket data set.
+However, the power of writing in R Markdown is that you can read in data and automatically create corresponding LaTeX tables. The easiest way is probably to use [kable function](https://rdrr.io/cran/knitr/man/kable.html) For example, Table \@ref(tab:basket-data) shows the first 5 rows in our basket data set.
 
 ```{r basket-data, echo=FALSE, message=FALSE}
 data %>%
@@ -197,7 +193,7 @@ data %>%
   knitr::kable(format = "latex", booktabs = TRUE, caption = "The first 5 rows of some made-up basket data.")
 ```
 
-You can reference Table \@ref(tab:basket-data) with `\@ref(fig:basket-data)`.
+You can reference Table \@ref(tab:basket-data) with `\@ref(tab:basket-data)`.
 
 You can also do arbitrary transformations and analyses of the data before creating a table, as in Table \@ref(tab:basket-summary).
 
@@ -208,7 +204,7 @@ data %>%
   knitr::kable(format = "latex", booktabs = TRUE, caption = "Summary statistics of goals scored by top players in made-up basketball season.")
 ```
 
-To set a wider table, which takes up the whole width of the page's live area, put it in a `\table*` environment by adding the parameter `table.env = 'table*'` to `kable`, like in Table \@ref(tab:basket-summary-wide).
+To set a wider table, which takes up the whole width of the page's live area, put it in a `\table*` environment by adding the parameter `table.env = 'table*'` to the `kable` function, like in Table \@ref(tab:basket-summary-wide).
 
 ```{r basket-summary-wide, echo=FALSE, message=FALSE}
 data %>%
@@ -221,13 +217,13 @@ data %>%
 
 ## Figures
 ### Static figures
-Figures you similarly include via code chunks. You can include arbitrary image files, as in Figure \@ref(fig:static-image). 
+Figures are similarly included via code chunks. You can include arbitrary image files, as in Figure \@ref(fig:static-image). 
 
 ```{r static-image, fig.cap="Here's a little pretty fly."}
 knitr::include_graphics("figures/fly.eps")
 ```
 
-If you don't give it a caption in the chunk options (with `fig.cap="My caption"`), the figure won't float:
+If you don't give it a caption in the chunk options (with `fig.cap="My caption"`), the figure does not float:
 
 ```{r static-image-non-float"}
 knitr::include_graphics("figures/fly.eps")
@@ -242,7 +238,7 @@ knitr::include_graphics("figures/fly.eps")
 At the moment, if you need to style text in the caption, or include references in the caption, you need to use \LaTeX\ rather than markdown syntax. As the figure caption is a string, you must escape the \LaTeX\ syntax's `\` with another `\`, as in Figure \@ref(fig:static-image-resized).
 
 ### Dynamic figures
-Again, the power of R Markdown is that you can include e.g. plots that are dynamically generated from the underlying data. For example, Figure \@ref(fig:basket-plot) is a simple visualisation of the basket data Note that we restrict the figure size to the column width.
+Again, the power of R Markdown is that you can include e.g. plots that are dynamically generated from the underlying data. For example, Figure \@ref(fig:basket-plot) is a simple visualisation of the basket data (note that we restrict the figure size to the column width).
 
 ```{r basket-plot, fig.cap="Total number of goals by the top 3 players in made-up basketball season", out.width='0.98\\columnwidth'}
 data %>%
@@ -328,7 +324,7 @@ Another construct is **proof**, for example,
 \end{proof}
 
 # Conclusions
-This paragraph end the body of this sample document. Remember that you might still have Acknowledgments or Appendices; brief samples of these follow.  There is still the Bibliography to deal with; and we will make a disclaimer about that here: with the exception of the reference to the \LaTeX\ book, the citations in this paper are to articles which have nothing to do with the present subject and are used as examples only.
+This paragraph ends the body of this sample document. Remember that you might still have Acknowledgments or Appendices; brief samples of these follow.  There is still the Bibliography to deal with; and we will make a disclaimer about that here: with the exception of the reference to the \LaTeX\ book, the citations in this paper are to articles which have nothing to do with the present subject and are used as examples only.
 
 # (APPENDIX) Appendix {-} 
 # Headings in Appendices
