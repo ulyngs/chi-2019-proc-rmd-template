@@ -111,30 +111,59 @@ This line, however, does not form a separate paragraph.
 
 Make words or phrases *italicized* by surrounding them with a single \*; **embolden** them by surrounding them with \*\***two**\*\*. `Typewriter-style` (for instance, for computer code) you create by  surrounding text with `` `backticks` ``.^[Another footnote here. Let's make this a rather long one to see how it looks.]
 
-## Math Equations
-You may want to display math equations in three distinct styles: inline, numbered or non-numbered display.  Each of the three are discussed in the next sections. You can use usual \LaTeX\ syntax directly, 
-
-### Inline (In-text) Equations
-A formula that appears in the running text is called an inline or in-text formula.  It is produced by the
-**math** environment, which can be invoked by surrounding text with dollar signs: \$. You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \LaTeX\. For example, here's a nice equation inline: $\lim_{n\rightarrow \infty}x=0$. If you're writing in RStudio, you can even hover over it to see the rendered output displayed!
-
-### Display Equations
-A numbered display equation---one set off by vertical space from the text and centered horizontally---is produced by using \LaTeX\ syntax directly to put the content in an `equation` environment. So here's that nice equation from above:
-\begin{equation}
-\lim_{n\rightarrow \infty}x=0
-\end{equation}.
-
-In fact, you can use any arbitrary \LaTeX\ syntax directly in your .Rmd document.
-
-To make an unnumbered display equation, just surround the expression with two dollar signs:
-$$
-\lim_{n\rightarrow \infty}x=0
-$$
-
 ## Citations
 Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference proceedings [@clark:pct] or maybe books [@Lamport:LaTeX; @salas:calculus] listed in the Bibliography section of your article will occur throughout the text of your article. You should use BibTeX to automatically produce this bibliography; you simply need to insert the citation command: \@ followed by the citation key. The key is a short reference you invent to uniquely identify each work. This identifying key is included with each item in the `.bib` file for your article.
 
-For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, we write `[@Cohen07]`[@Cohen07]. If we drop the the `[`s, we get the actual name of the authors, in addition to the citation: @Cohen07. See [this short guide](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, we write `[@Cohen07]`[@Cohen07]. If we drop the `[]`'s, we get the actual name of the authors, in addition to the citation: @Cohen07. See [this short guide](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+
+# Dynamic reporting
+One of the most important benefits of writing in R Markdown (aside from being able to compile to other formats than PDF, such as HTML or even Microsoft Word), is the ability to insert results dynamically into the document in the form of code chunks or inline code. This means that you can do analyses **directly** in your manuscript or, probably better, read your analysis result file(s) directly into your manuscript and insert the data. 
+
+This is important for two related reasons:
+1. It reduces the risk of introducing errors in your paper, because you avoid initial manual transfer of results from statistical software to manuscript.
+2. If at a later stage you need to update the analysis files, the results reported in your manuscript will automatically be updated - no need to remember to automatically update figures and tables to reflect the latest analysis.
+
+## Setup chunks
+In R Markdown syntax, code chunks have the following form:
+
+````
+```{ coding_language chunk_label, chunk_options}
+# your code goes here
+```
+````
+
+The first chunk included in an R Markdown document is usually used to load desired packages as well as set some default chunk options.
+
+````
+```{ r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE, 
+  message = FALSE, warning = FALSE)  
+# by default, don't include code output, 
+# messages, or warnings in manuscript 
+```
+````
+```{r setup, include=FALSE}
+#the chunk above was just for illustration purposes
+library(tidyverse) 
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+For illustration purposes, let's also read in a made-up data set of goals scored by basketball players: 
+
+````
+```{ r, include=FALSE}
+data <- read_csv("fakeBasketData.csv")
+```
+````
+
+```{r, include=FALSE}
+data <- read_csv("fakeBasketData.csv")
+mean(data$goals)
+```
+
+## Inline results
+We can refer to this data set by with inline code. For example, there are `r nrow(data)` observations in the data set. The mean number of goals made by a player in a game is: `r mean(data$goals)`.
 
 ## Tables
 <!--Because tables cannot be split across pages, the best placement for them is typically the top of the page nearest their initial cite. To ensure this proper ``floating'' placement of tables, use the environment \textbf{table} to enclose the table's contents and the table caption.  The contents of the table itself must go in the \textbf{tabular} environment, to be aligned properly in rows and columns, with the desired horizontal and vertical rules.  Again, detailed instructions on \textbf{tabular} material are found in the \textit{\LaTeX\ User's Guide}.-->
@@ -159,12 +188,8 @@ For tables, you could use \LaTeX\ syntax directly. This might be ok if your tabl
 
 However, R Markdown shines in letting you read in your data and then automatically insert that into LaTeX tables, bypassing errors introduced via transferring data manually into a table. We can do that by inserting chunks (with three backticks) that runs code (could be R, Python, or something else), which is executed at the point of compilation and inserted into our final document:
 
-```{r, include=FALSE}
-library(tidyverse)
-```
 
 ```{r basket-data, echo=FALSE, message=FALSE}
-data <- read_csv("fakeBasketData.csv")
 data %>%
   head() %>%
   knitr::kable(format = "latex", booktabs = TRUE, caption = "The first 5 rows of some made-up basket data.")
@@ -234,6 +259,26 @@ data %>%
 ```
 
 
+## Math Equations
+You may want to display math equations in three distinct styles: inline, numbered or non-numbered display.  Each of the three are discussed in the next sections. You can use usual \LaTeX\ syntax directly, 
+
+### Inline (In-text) Equations
+A formula that appears in the running text is called an inline or in-text formula.  It is produced by the
+**math** environment, which can be invoked by surrounding text with dollar signs: \$. You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \LaTeX\. For example, here's a nice equation inline: $\lim_{n\rightarrow \infty}x=0$. If you're writing in RStudio, you can even hover over it to see the rendered output displayed!
+
+### Display Equations
+A numbered display equation---one set off by vertical space from the text and centered horizontally---is produced by using \LaTeX\ syntax directly to put the content in an `equation` environment. So here's that nice equation from above:
+\begin{equation}
+\lim_{n\rightarrow \infty}x=0
+\end{equation}.
+
+In fact, you can use any arbitrary \LaTeX\ syntax directly in your .Rmd document.
+
+To make an unnumbered display equation, just surround the expression with two dollar signs:
+$$
+\lim_{n\rightarrow \infty}x=0
+$$
+
 ## Theorem-like Constructs
 
 You can use straight-up \LaTeX\ syntax, or R Markdown. See [bookdown.org](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#theorems) for guidance if you want to do it the R Markdown way. Here's the usual way:
@@ -289,13 +334,15 @@ The rules about hierarchical headings discussed above for the body of the articl
 ## Introduction
 ## Paper meta data
 ## The Body of the Paper
-### Type Changes and  Special Characters
+### Type Changes and Special Characters
+### Citations
+## Dynamic reporting
+### Inline results
+### Tables
+### Figures
 ### Math Equations
 #### Inline (In-text) Equations
 #### Display Equations
-### Citations
-### Tables
-### Figures
 ### Theorem-like Constructs
 ## Conclusions
 ## References
