@@ -1,11 +1,11 @@
-Package: ACMArticle2018
+Package: CHIProc2018
 Type: Package
-Title: What the Package Does (Title Case)
+Title: ACM CHI Proceedings Template
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Ulrik Lyngs
+Maintainer: Ulrik Lyngs <ulrik.lyngs@cs.ox.ac.uk>
+Description: This package provides a template for writing ACM CHI Proceedings papers using R Markdown.
+    The package uses the LaTeX templates from the 2017 ACM Master Article Template (v. 1.55).
+License: Creative Commons, BY-SA
 Encoding: UTF-8
 LazyData: true

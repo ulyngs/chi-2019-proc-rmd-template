@@ -1,2 +1,2 @@
-name: "ACM articles 2018"
-description: "This is a template for creating ACM articles in R Markdown, using the ACM's 2018 LaTeX templates"
+name: "ACM CHI Proceedings"
+description: "This is a template for creating ACM CHI Proceedings articles in R Markdown, using the 2017 ACM Master Article LaTeX template (v1.55)"
