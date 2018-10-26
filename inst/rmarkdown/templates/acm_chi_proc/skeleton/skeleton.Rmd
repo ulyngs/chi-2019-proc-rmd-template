@@ -113,7 +113,7 @@ Make words or phrases *italicized* by surrounding them with a single \*; **embol
 ## Citations
 Citations to articles [@bowman:reasoning; @braams:babel; @Cohen07], conference proceedings [@clark:pct] or maybe books [@Lamport:LaTeX; @salas:calculus] listed in the Bibliography section of your article will occur throughout the text of your article. To insert a reference in the R Markdown syntax, type \@ followed by the citation key. The key is a short reference uniquely identifying each entry in in the `.bib` file for your article, in which your references are listed in [BibTex](http://www.bibtex.org) format.
 
-For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, write `[@Cohen07]`[@Cohen07]. If you drop the `[]`'s, you get author names, as well as the citation: @Cohen07. See [this short guide for more](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+For example, to cite the article "Deciding equivalances among conjunctive aggregate queries" from our `.bib` file, write `[@Cohen07]`. If you drop the `[]`'s, you get author names, as well as the citation: @Cohen07. See [this short guide for more](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 
 # Dynamic reporting
 One of the most important benefits of writing in R Markdown (aside from being able to compile to other formats than PDF, such as HTML or even Microsoft Word), is the ability to insert results dynamically into your manuscript using code chunks or inline code. This means that you can do analyses **directly** in your manuscript or, probably better, read file(s) with data, summaries, or results directly into your manuscript and refer to them dynamically.
