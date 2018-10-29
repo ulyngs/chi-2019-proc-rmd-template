@@ -17,7 +17,7 @@ devtools::install_github("ulyngs/chi-proc-rmd-template")
 
 ## Usage
 The easiest way to use the template is with RStudio, via File -> New File -> R Markdown...
-In the dialog box, click 'From Template', then find the new 'ACM CHI Proceedings {CHIProc2018}' option, choose a name for what you'd like to make (e.g. 'Test'), then click OK:
+In the dialog box, click 'From Template', then find the new 'ACM CHI Proceedings {CHIProc2018}' option, choose a name for your manuscript (e.g. 'Test'), then click OK:
 ![R Markdown template dialog](man/1_template_dialog.png "R Markdown template dialog")
 
 A new folder named *Test* is created, and you see an open **Test.Rmd** file:
