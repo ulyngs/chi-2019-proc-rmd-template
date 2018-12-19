@@ -164,10 +164,10 @@ This is important for two (related) reasons:
 1. You avoid initial manual transfer of results from statistical software to manuscript, which reduces the risk of error.
 2. If at a later stage you update the analysis files, the results reported in your manuscript are automatically also updated - this again reduces the risk of mistakes, because you don't need to manually update figures and tables.
 
-In R Markdown syntax, **code chunks** have the following form:
+In R Markdown syntax, **code chunks** have the following form (cf. [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/r-code.html)):
 
-````
-```{ coding_language chunk_label, chunk_options}
+````r
+`r ''````{coding_language chunk-label, chunk_options}
 # your code goes here
 ```
 ````
