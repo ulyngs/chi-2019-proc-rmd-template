@@ -1,11 +1,11 @@
-Package: CHIProc2018
+Package: CHIProceedings
 Type: Package
 Title: ACM CHI Proceedings Template
-Version: 0.1.0
+Version: 1.0.0
 Author: Ulrik Lyngs
 Maintainer: Ulrik Lyngs <ulrik.lyngs@cs.ox.ac.uk>
 Description: This package provides a template for writing ACM CHI Proceedings papers using R Markdown.
-    The package uses the LaTeX templates from the 2017 ACM Master Article Template (v. 1.55).
+    The package uses the LaTeX templates from the ACM Master Article Template (v. 1.56).
 License: Creative Commons, BY-SA
 Encoding: UTF-8
 LazyData: true

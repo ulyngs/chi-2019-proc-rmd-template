@@ -1,0 +1,7 @@
+#output options
+bookdown::pdf_book:
+  template: chi_proc_template_v1.56_Rmd.tex
+  keep_tex: true
+  citation_package: natbib
+  includes:
+    in_header: ccsxml.tex

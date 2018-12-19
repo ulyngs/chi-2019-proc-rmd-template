@@ -37,7 +37,7 @@
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{acmart}
-[2018/08/12 v1.55 Typesetting articles for the Association for
+[2018/11/11 v1.56 Typesetting articles for the Association for
 Computing Machinery]
 \def\@classname{acmart}
 \InputIfFileExists{acmart-preload-hook.tex}{%
@@ -474,14 +474,14 @@ Computing Machinery]
 \AtEndPreamble{%
   \if@ACM@screen
     \hypersetup{colorlinks,
-      linkcolor=ACMRed,
+      linkcolor=ACMPurple,
       citecolor=ACMPurple,
       urlcolor=ACMDarkBlue,
       filecolor=ACMDarkBlue}
     \else
     \hypersetup{hidelinks}
   \fi
-  \hypersetup{pdflang={English},
+  \hypersetup{pdflang={en},
     pdfdisplaydoctitle}}
 \if@ACM@natbib
   \let\citeN\cite
@@ -628,6 +628,22 @@ Computing Machinery]
   \expandafter\@iiiparbox\@mpargs{\unvbox\@tempboxa}}
 \def\@textbottom{\vskip \z@ \@plus 1pt}
 \let\@texttop\relax
+\ifcase\ACM@format@nr
+\relax % manuscript
+\or % acmsmall
+\or % acmlarge
+\or % acmtog
+  \flushbottom
+\or % sigconf
+  \flushbottom
+\or % siggraph
+  \flushbottom
+\or % sigplan
+  \flushbottom
+\or % sigchi
+  \flushbottom
+\or % sigchi-a
+\fi
 \RequirePackage{iftex}
 \ifPDFTeX
 \input{glyphtounicode}
@@ -656,6 +672,7 @@ Computing Machinery]
   \RequirePackage[T1]{fontenc}
 \ifxetex
   \RequirePackage[tt=false]{libertine}
+  \setmonofont{inconsolata}
 \else
   \RequirePackage[tt=false, type1=true]{libertine}
 \fi
@@ -668,6 +685,21 @@ Computing Machinery]
 \if@ACM@sigchiamode
   \renewcommand{\familydefault}{\sfdefault}
 \fi
+\newif\if@Description@present
+\@Description@presenttrue
+\newif\if@undescribed@images
+\@undescribed@imagesfalse
+\newcommand\Description[2][]{\global\@Description@presenttrue}
+\AtEndDocument{\if@undescribed@images
+  \ClassWarningNoLine{\@classname}{Some images may lack descriptions}\fi}
+\AtBeginEnvironment{figure}{\@Description@presentfalse}
+\AtBeginEnvironment{figure*}{\@Description@presentfalse}
+\AtEndEnvironment{figure}{\if@Description@present\else
+  \global\@undescribed@imagestrue
+  \ClassWarning{\@classname}{A possible image without description}\fi}
+\AtEndEnvironment{figure*}{\if@Description@present\else
+  \global\@undescribed@imagestrue
+  \ClassWarning{\@classname}{A possible image without description}\fi}
 \RequirePackage{caption, float}
 \captionsetup[table]{position=top}
 \if@ACM@journal
@@ -691,8 +723,12 @@ Computing Machinery]
   \or % sigchi
     \captionsetup[figure]{labelfont={bf, small},
       textfont={bf, small}}
+    \captionsetup[table]{labelfont={bf, small},
+      textfont={bf, small}}
   \or % sigchi-a
     \captionsetup[figure]{labelfont={bf, small},
+      textfont={bf, small}}
+    \captionsetup[table]{labelfont={bf, small},
       textfont={bf, small}}
   \fi
 \fi
@@ -702,8 +738,14 @@ Computing Machinery]
 \long\def\@sidebar#1{\bgroup\captionsetup{type=sidebar}%
   \marginpar{\small#1}\egroup}
 \newenvironment{marginfigure}{\Collect@Body\@marginfigure}{}
-\long\def\@marginfigure#1{\bgroup\captionsetup{type=figure}%
-  \marginpar{\centering\small#1}\egroup}
+\long\def\@marginfigure#1{\bgroup
+  \captionsetup{type=figure}%
+  \marginpar{\@Description@presentfalse\centering
+    \small#1\if@Description@present\else
+      \global\@undescribed@imagestrue
+      \ClassWarning{\@classname}{A possible image without description}
+      \fi}%
+  \egroup}
 \newenvironment{margintable}{\Collect@Body\@margintable}{}
 \long\def\@margintable#1{\bgroup\captionsetup{type=table}%
   \marginpar{\centering\small#1}\egroup}
@@ -1327,10 +1369,12 @@ Computing Machinery]
 \RequirePackage{comment}
 \excludecomment{CCSXML}
 \let\@concepts\@empty
+\newcounter{@concepts}
 \newcommand\ccsdesc[2][100]{%
   \ccsdesc@parse#1~#2~~\ccsdesc@parse@end}
 \RequirePackage{textcomp}
 \def\ccsdesc@parse#1~#2~#3~{%
+  \stepcounter{@concepts}%
   \expandafter\ifx\csname CCS@General@#2\endcsname\relax
     \expandafter\gdef\csname CCS@General@#2\endcsname{\textbullet\
       \textbf{#2}}%
@@ -1344,9 +1388,10 @@ Computing Machinery]
     \expandafter\gdef\csname CCS@Punctuation@#2\endcsname{
       \textrightarrow\ }%
     \expandafter\g@addto@macro\expandafter{\csname CCS@Specific@#2\endcsname}{%
-     \ifnum#1>499\textbf{#3}; \else
-     \ifnum#1>299\textit{#3}; \else
-     #3; \fi\fi}%
+     \addtocounter{@concepts}{-1}%
+     \ifnum#1>499\textbf{#3}\else
+     \ifnum#1>299\textit{#3}\else
+     #3\fi\fi\ifnum\value{@concepts}=0.\else; \fi}%
   \fi
 \ccsdesc@parse@finish}
 \def\ccsdesc@parse@finish#1\ccsdesc@parse@end{}
@@ -1594,9 +1639,6 @@ Computing Machinery]
   \let\@footnotemark\@footnotemark@nolink
   \let\@footnotetext\@footnotetext@nolink
   \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
-  \global\@topnum\z@ % this prevents floats from falling
-                     % at the top of page 1
-  \global\@botnum\z@ % we do not want them to be on the bottom either
   \hsize=\textwidth
   \def\@makefnmark{\hbox{\@textsuperscript{\@thefnmark}}}%
   \@mktitle\if@ACM@sigchiamode\else\@mkauthors\fi\@mkteasers
@@ -1707,6 +1749,9 @@ Computing Machinery]
       \csname ver@acmart.cls\endcsname\space
       and hyperref
       \csname ver@hyperref.sty\endcsname}}%
+  \global\@topnum\z@ % this prevents floats from falling
+                     % at the top of page 1
+  \global\@botnum\z@ % we do not want them to be on the bottom either
   \@printendtopmatter
   \@afterindentfalse
   \@afterheading
@@ -2144,7 +2189,12 @@ Computing Machinery]
     \def\@teaser##1{\par\bigskip\bgroup
       \captionsetup{type=figure}##1\egroup\par}
     \global\setbox\mktitle@bx=\vbox{\noindent\box\mktitle@bx\par
-    \noindent\@teaserfigures\par\medskip}%
+      \noindent\@Description@presentfalse
+      \@teaserfigures\par\if@Description@present\else
+         \global\@undescribed@imagestrue
+         \ClassWarning{\@classname}{A possible image without
+           description}\fi
+    \medskip}%
   \fi}
 \def\@mkabstract{\bgroup
   \ifx\@abstract\@lempty\else
@@ -2152,7 +2202,7 @@ Computing Machinery]
     \if@ACM@journal
        \everypar{\setbox\z@\lastbox\everypar{}}\small
     \else
-      \section*{Abstract}%
+      \section*{\abstractname}%
     \fi
    \ignorespaces\@abstract\par}%
   \fi\egroup}
@@ -2634,10 +2684,11 @@ Computing Machinery]
 }{%
   \popQED\endtrivlist\@endpefalse
 }
+\newcommand\acksname{Acknowledgments}
 \specialcomment{acks}{%
   \begingroup
-  \section*{Acknowledgments}
-  \phantomsection\addcontentsline{toc}{section}{Acknowledgments}
+  \section*{\acksname}
+  \phantomsection\addcontentsline{toc}{section}{\acksname}
 }{%
   \endgroup
 }

@@ -1,16 +1,16 @@
 # ACM CHI Proceedings R Markdown Template
-This R package provides a template for writing ACM CHI Proceedings papers in R Markdown, and compiling to PDF via the LaTeX templates from the 2017 ACM Master Article Template (v. 1.55).
+This R package provides a template for writing ACM CHI Proceedings papers in R Markdown, and compiling to PDF via the LaTeX templates from the ACM Master Article Template (v. 1.56).
 
 ## Overview
 Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientific papers makes your work more transparent and reproducible, and reduces the risk of introducing errors by manually transfering results from statistical software to manuscript.
 
 However, getting R Markdown to [play nicely with the latest ACM LaTeX templates can be tricky](https://ulriklyngs.com/blog/acm-articles-with-r-markdown).
 
-This R package makes it easy, by providing a ready-made .Rmd template with YAML metadata and body text illustrations of what you need to know, which compiles to the latest CHI Proceedings (used for CHI'19 submissions) format via the [official 2017 ACM Master Article LaTeX template](https://www.acm.org/publications/proceedings-template).
+This R package makes it easy, by providing a ready-made .Rmd template with YAML metadata and body text illustrations of what you need to know, which compiles to the latest CHI Proceedings (used for CHI'19 submissions) format via the [ACM Master Article LaTeX template](https://www.acm.org/publications/proceedings-template).
 
 ## Installation
 ``` r
-# The package isn't on CRAN yet - install the development version from GitHub:
+# The package isn't on CRAN - install the development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("ulyngs/chi-proc-rmd-template")
 ```
