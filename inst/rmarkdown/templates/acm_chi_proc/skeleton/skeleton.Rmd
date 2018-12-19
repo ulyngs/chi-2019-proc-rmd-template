@@ -74,7 +74,7 @@ author:
     affiliation:
       institution: The Kumquat Consortium
     email: jpkumquat\@consortium.net
-abstract: This is a guided illustration of how to write a full paper for CHI, using the latest official ACM \LaTeX\ template [Version 1.55, September 11, 2018](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
+abstract: This is a guided illustration of how to write a full paper for CHI, using the [official ACM Master \LaTeX\ template](https://www.acm.org/publications/proceedings-template). #If you put the abstract in quotes, you must escape LaTeX syntax with an extra '\', e.g. '\\LaTeX\\'.
 keywords: ACM proceedings, \LaTeX, text tagging
 teaser-figure: figures/sampleteaser.pdf
 teaser-caption: Write your teaser caption here
