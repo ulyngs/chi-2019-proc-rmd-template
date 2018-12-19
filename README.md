@@ -29,4 +29,4 @@ If you click 'Knit', it compiles to the example PDF output with the illustration
 It also keeps the intermediary generated **Test.tex** file from which the PDF output was created:
 ![Intermediary Test.tex from which the PDF output was created](man/4_tex.png "Intermediary Test.tex from which the PDF output was created")
 
-Now go ahead and replace the content of **Test.Rmd** with your own fantastic work!
+Now go ahead and replace the content of **Test.Rmd** with your own fantastic work! **NOTE: include the initial *setup_output* at the top of your file, which creates custom chunk options that allow you to e.g. add image descriptions for visually impaired readers.**
