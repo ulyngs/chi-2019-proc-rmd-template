@@ -31,4 +31,4 @@ It also keeps the intermediary generated **Test.tex** file from which the PDF ou
 
 Now go ahead and replace the content of **Test.Rmd** with your own fantastic work! 
 
-**NOTE: include the initial *setup_output* at the top of your file, which creates custom chunk options that allow you to e.g. add image descriptions for visually impaired readers.**
+**NOTE: include the initial *setup_output* code chunk at the top of your .Rmd file, which creates custom chunk options that allow you to e.g. add image descriptions for visually impaired readers.**
