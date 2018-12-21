@@ -244,7 +244,7 @@ For tables, you could use \LaTeX\ syntax directly. This might be useful if your 
 \end{tabular}
 \end{table}
 
-However, the power of writing in R Markdown is that you can read in data and automatically create corresponding LaTeX tables. The easiest way is probably to use [kable function](https://rdrr.io/cran/knitr/man/kable.html) For example, Table \@ref(tab:basket-data) shows the first 5 rows in our basket data set.
+However, the power of writing in R Markdown is that you can read in data and automatically create corresponding LaTeX tables. The easiest way is probably to use the [`kable` function](https://rdrr.io/cran/knitr/man/kable.html). For example, Table \@ref(tab:basket-data) shows the first 5 rows in our basket data set.
 
 ```{r basket-data, echo=FALSE, message=FALSE}
 data %>%
@@ -282,7 +282,7 @@ Figures are similarly included via code chunks. You can include arbitrary image 
 knitr::include_graphics("figures/fly.eps")
 ```
 
-If you don't give it a caption in the chunk options (with `fig.cap="My caption"`), the figure does not float:
+If you don't give it a caption in the chunk options (with something like `fig.cap="My caption"`), the figure does not float:
 
 ```{r static-image-non-float"}
 knitr::include_graphics("figures/fly.eps")
@@ -406,7 +406,7 @@ The rules about hierarchical headings discussed above for the body of the articl
 ## References
 
 # More Help for the Hardy
-For acknowledgements, you may want to use the \LaTeX\ syntax for this from the ACM template example, in which case you'll put acknowledgement text in between `\begin{acks}` and `\end{acks}`. Alternatively, just start an unnumbered heading `# Acknowledgements{-}` and write your text:
+For acknowledgements, you may want to use the \LaTeX\ syntax for this from the ACM template example, in which case you'll put acknowledgement text in between `\begin{acks}` and `\end{acks}`. Alternatively, just start an unnumbered heading `# Acknowledgements{-}` and write your text, like this:
 
 # Acknowledgements{-}
 The authors would like to thank Dr. Yuhua Li for providing the MATLAB code of the *BEPS* method.
