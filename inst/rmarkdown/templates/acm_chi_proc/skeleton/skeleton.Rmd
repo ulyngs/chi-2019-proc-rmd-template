@@ -1,15 +1,16 @@
 ---
 #conference and copyright metadata
-copyright: acmcopyright #otherwise e.g. none, acmlicensed, ...
-copyright-year: 2016
-DOI: 10.475/123_4
-ISBN: 123-4567-24-567/08/06
-conference: ACM Woodstock conference
-conference-short: WOODSTOCK'97
-conference-date: July 1997
-conference-location: El Paso, Texas USA
-acm-year: 1997
-acm-price: 15.00
+copyright-year: 2019
+acmYear: 1997
+setcopyright: acmlicensed #otherwise e.g. none, acmcopyright, ...
+conference: CHI Conference on Human Factors in Computing Systems Proceedings
+conference-short: CHI 2019
+conference-date: May 4--9, 2019
+conference-location: Glasgow, Scotland Uk
+acmBooktitle: CHI Conference on Human Factors in Computing Systems Proceedings (CHI 2019), May 4--9, 2019, Glasgow, Scotland Uk
+acmPrice: 15.00
+acmDOI: 10.475/123_4
+acmISBN: 123-4567-24-567/08/06
 
 #paper metadata
 title: Writing CHI Proceedings Papers With R Markdown
