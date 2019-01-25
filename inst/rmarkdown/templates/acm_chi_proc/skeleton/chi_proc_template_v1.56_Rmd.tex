@@ -19,6 +19,7 @@ $endif$
 \acmISBN{$acmISBN$}
 
 $if(remove-header)$
+\settopmatter{printacmref=true}
 \fancyhead{}
 $endif$
 
@@ -42,6 +43,11 @@ $for(author)$
 $if(authornote)$
   \authornote{$authornote$}
 $endif$
+$if(orcid)$
+  \orcid{$orcid$}
+$endif$
+\email{$author.email$}
+$if(author.affiliation)$
 \affiliation{
   \institution{$author.affiliation.institution$}
   \city{$author.affiliation.city$}
@@ -49,7 +55,16 @@ $endif$
   \country{$author.affiliation.country$}
   \postcode{$author.affiliation.postcode$}
 }
-\email{$author.email$}
+$endif$
+$if(author.additional-affiliation)$
+\additionalaffiliation{
+  \institution{$author.additional-affiliation.institution$}
+  \city{$author.additional-affiliation.city$}
+  \state{$author.additional-affiliation.state$}
+  \country{$author.additional-affiliation.country$}
+  \postcode{$author.additional-affiliation.postcode$}
+}
+$endif$
 $endfor$
 
 % The default list of authors is too long for headers.
