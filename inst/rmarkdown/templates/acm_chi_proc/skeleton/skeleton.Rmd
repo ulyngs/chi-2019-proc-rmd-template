@@ -108,11 +108,14 @@ if (length(new.pkg))
 
 ```{r setup_output, include=FALSE}
 library(knitr)
+#library(Cairo) #required if you need figures to be saved as pdfs with fonts embedded; see below
 
 ##### YOU MUST INCLUDE THE BELOW IN A CHUNK AT THE TOP OF YOUR .RMD SOURCE
 ##### TO CREATE ADDITIONAL CHUNK OPTIONS FOR E.G FIGURE DESCRIPTIONS
-# out.extra ensures that knitr uses LaTeX code for figures, cf. https://stackoverflow.com/questions/42486617/knitr-ignoring-fig-pos
-knitr::opts_chunk$set(out.extra = '')
+# 1. If you want figures to be saved as pdfs with fonts embedded, set dev = "cairo_pdf" instead of dev = "pdf", and load the 'Cairo' library;
+# if you are on a Mac, the Cairo library requires XQuartz which you can install from https://www.xquartz.org
+# 2. out.extra ensures that knitr uses LaTeX code for figures, cf. https://stackoverflow.com/questions/42486617/knitr-ignoring-fig-pos
+knitr::opts_chunk$set(dev = "pdf", out.extra = '')
 
 # create additional chunk options
 hook_chunk = knit_hooks$get('chunk')
