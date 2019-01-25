@@ -1,7 +1,25 @@
+%
+% This is sample-sigchi.tex from v1.56 of the ACM Master LaTeX template.
+% It has been adjusted to enable content to be inserted into the template
+% from the source document main.Rmd, using RStudio
+%
+% See https://github.com/ulyngs/chi-proc-rmd-template
+%
+%
+
 \documentclass[sigchi, $if(review)$review,$endif$$if(anonymous)$anonymous,$endif$]{acmart}
+
+\usepackage{balance} % UL 25 Jan 2019: allow columns to be balanced on final page which is requested by Sheridan for camera-ready
 
 \usepackage{booktabs} % For formal tables
 \def\tightlist{} % UL 16 Dec 2018 stop pandoc from messing things up by putting lists in 'tightlist' command when no space between bullet points in Rmd file
+
+% UL 25 Jan 2019: allow a watermark on the first page to be set from YAML - e.g. to make a version that says 'pre-print'
+$if(watermark)$
+\usepackage[$if(watermark-on-first-page-only)$firstpage$endif$]{draftwatermark}
+\SetWatermarkText{$watermark$}
+\SetWatermarkLightness{0.9}
+$endif$
 
 % UL 19 Dec 2018, enable code inclusion in shaded environments
 $if(highlighting-macros)$
@@ -95,6 +113,7 @@ $endif$
 $body$
 
 \bibliographystyle{ACM-Reference-Format}
+\balance %balance columns (i.e. make two columns of even length) on the final page
 \bibliography{$bibliography-path$}
 
 \end{document}
