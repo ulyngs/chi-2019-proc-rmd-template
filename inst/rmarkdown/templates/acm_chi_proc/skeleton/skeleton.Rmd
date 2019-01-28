@@ -1,14 +1,14 @@
 ---
 #conference and copyright metadata
 copyright-year: 2019
-acmYear: 1997
+acm-year: 1997
 setcopyright: acmlicensed #otherwise e.g. none, acmcopyright, ...
 conference: CHI Conference on Human Factors in Computing Systems Proceedings
 conference-short: CHI 2019
 conference-date: May 4--9, 2019
 conference-location: Glasgow, Scotland UK
-acmBooktitle: CHI Conference on Human Factors in Computing Systems Proceedings (CHI 2019), May 4--9, 2019, Glasgow, Scotland UK
-acmPrice: 15.00
+acm-booktitle: CHI Conference on Human Factors in Computing Systems Proceedings (CHI 2019), May 4--9, 2019, Glasgow, Scotland UK
+acm-price: 15.00
 acmDOI: 10.475/123_4
 acmISBN: 123-4567-24-567/08/06
 remove-header: false #this removes the header by inserting \fancyhead{} in the LaTeX template
@@ -103,7 +103,6 @@ new.pkg <- pkg[!(pkg %in% installed.packages())]
 # install them
 if (length(new.pkg))
   install.packages(new.pkg, repos = "http://cran.rstudio.com")
-# Load packages (thesisdown will load all of the packages as well)
 ```
 
 ```{r setup_output, include=FALSE}
