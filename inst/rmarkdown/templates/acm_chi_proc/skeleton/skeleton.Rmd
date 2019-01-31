@@ -14,6 +14,7 @@ acmISBN: 123-4567-24-567/08/06
 remove-header: false #this removes the header by inserting \fancyhead{} in the LaTeX template
 watermark: false #e.g. 'pre-print'
 watermark-on-first-page-only: true
+authorversion: false
 
 #paper metadata
 title: Writing CHI Proceedings Papers With R Markdown
