@@ -93,8 +93,9 @@ bibliography-path: sample-bibliography.bib
 # Output configurations are set in _output.yml
 
 
-# # NOTE: IF YOU WANT TO OUTPUT YOUR PAPER AS A GITBOOK, COMMENT
-# # OUT METADATA ABOVE AND USE THE BELOW TO SET METADATA INSTEAD
+# # NOTE: IF YOU WANT TO OUTPUT YOUR PAPER AS A GITBOOK, THEN
+# # (i) comment out metadata and above and remove #'s below
+# # (ii) in _output.yml, remove '#' in front of 'bookdown::gitbook: default'
 # author: "Ben Trovato, G.K.M. Tobin, Lars Thørväld, Valerie Béranger, Aparna Patel, Huifen Chan, Charles Palmer, John Smith, Julius P. Kumquat"
 # title: Writing CHI Proceedings Papers With R Markdown
 # subtitle: Using the 2018 ACM LaTeX template
