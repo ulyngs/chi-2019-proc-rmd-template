@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>3 Dynamic reporting | Writing CHI Proceedings Papers With R Markdown</title>
+  <meta name="description" content="3 Dynamic reporting | Writing CHI Proceedings Papers With R Markdown">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="3 Dynamic reporting | Writing CHI Proceedings Papers With R Markdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Dynamic reporting | Writing CHI Proceedings Papers With R Markdown" />
+  
+  
+  
+
+<meta name="author" content="Ben Trovato, G.K.M. Tobin, Lars Thørväld, Valerie Béranger, Aparna Patel, Huifen Chan, Charles Palmer, John Smith, Julius P. Kumquat">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="the-body-of-the-paper.html">
+<link rel="next" href="conclusions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="paper-meta-data.html"><a href="paper-meta-data.html"><i class="fa fa-check"></i><b>1</b> Paper meta data</a></li>
+<li class="chapter" data-level="2" data-path="the-body-of-the-paper.html"><a href="the-body-of-the-paper.html"><i class="fa fa-check"></i><b>2</b> The Body of The Paper</a><ul>
+<li class="chapter" data-level="2.1" data-path="the-body-of-the-paper.html"><a href="the-body-of-the-paper.html#type-changes-and-special-characters"><i class="fa fa-check"></i><b>2.1</b> Type Changes and <em>Special</em> Characters</a></li>
+<li class="chapter" data-level="2.2" data-path="the-body-of-the-paper.html"><a href="the-body-of-the-paper.html#citations"><i class="fa fa-check"></i><b>2.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html"><i class="fa fa-check"></i><b>3</b> Dynamic reporting</a><ul>
+<li class="chapter" data-level="3.1" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#setup-chunks-and-figure-descriptions"><i class="fa fa-check"></i><b>3.1</b> Setup chunks and figure descriptions</a></li>
+<li class="chapter" data-level="3.2" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#inline-results"><i class="fa fa-check"></i><b>3.2</b> Inline results</a></li>
+<li class="chapter" data-level="3.3" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#tables"><i class="fa fa-check"></i><b>3.3</b> Tables</a></li>
+<li class="chapter" data-level="3.4" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#figures"><i class="fa fa-check"></i><b>3.4</b> Figures</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#static-figures"><i class="fa fa-check"></i><b>3.4.1</b> Static figures</a></li>
+<li class="chapter" data-level="3.4.2" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#dynamic-figures"><i class="fa fa-check"></i><b>3.4.2</b> Dynamic figures</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#math-equations"><i class="fa fa-check"></i><b>3.5</b> Math Equations</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#inline-in-text-equations"><i class="fa fa-check"></i><b>3.5.1</b> Inline (In-text) Equations</a></li>
+<li class="chapter" data-level="3.5.2" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#display-equations"><i class="fa fa-check"></i><b>3.5.2</b> Display Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="dynamic-reporting.html"><a href="dynamic-reporting.html#theorem-like-constructs"><i class="fa fa-check"></i><b>3.6</b> Theorem-like Constructs</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>4</b> Conclusions</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html"><i class="fa fa-check"></i><b>A</b> Headings in Appendices</a><ul>
+<li class="chapter" data-level="A.1" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#introduction-1"><i class="fa fa-check"></i><b>A.1</b> Introduction</a></li>
+<li class="chapter" data-level="A.2" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#paper-meta-data-1"><i class="fa fa-check"></i><b>A.2</b> Paper meta data</a></li>
+<li class="chapter" data-level="A.3" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#the-body-of-the-paper-1"><i class="fa fa-check"></i><b>A.3</b> The Body of the Paper</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#type-changes-and-special-characters-1"><i class="fa fa-check"></i><b>A.3.1</b> Type Changes and Special Characters</a></li>
+<li class="chapter" data-level="A.3.2" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#citations-1"><i class="fa fa-check"></i><b>A.3.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#dynamic-reporting-1"><i class="fa fa-check"></i><b>A.4</b> Dynamic reporting</a><ul>
+<li class="chapter" data-level="A.4.1" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#inline-results-1"><i class="fa fa-check"></i><b>A.4.1</b> Inline results</a></li>
+<li class="chapter" data-level="A.4.2" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#tables-1"><i class="fa fa-check"></i><b>A.4.2</b> Tables</a></li>
+<li class="chapter" data-level="A.4.3" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#figures-1"><i class="fa fa-check"></i><b>A.4.3</b> Figures</a></li>
+<li class="chapter" data-level="A.4.4" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#math-equations-1"><i class="fa fa-check"></i><b>A.4.4</b> Math Equations</a></li>
+<li class="chapter" data-level="A.4.5" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#theorem-like-constructs-1"><i class="fa fa-check"></i><b>A.4.5</b> Theorem-like Constructs</a></li>
+</ul></li>
+<li class="chapter" data-level="A.5" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#conclusions-1"><i class="fa fa-check"></i><b>A.5</b> Conclusions</a></li>
+<li class="chapter" data-level="A.6" data-path="headings-in-appendices.html"><a href="headings-in-appendices.html#references"><i class="fa fa-check"></i><b>A.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="more-help-for-the-hardy.html"><a href="more-help-for-the-hardy.html"><i class="fa fa-check"></i><b>B</b> More Help for the Hardy</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Writing CHI Proceedings Papers With R Markdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dynamic-reporting" class="section level1">
+<h1><span class="header-section-number">3</span> Dynamic reporting</h1>
+<p>One of the most important benefits of writing in R Markdown (aside from being able to compile to other formats than PDF, such as HTML or even Microsoft Word), is the ability to insert results dynamically into your manuscript using code chunks or inline code. This means that you can do analyses <strong>directly</strong> in your manuscript or, probably better, read file(s) with data, summaries, or results directly into your manuscript and refer to them dynamically.</p>
+<p>This is important for two (related) reasons:
+1. You avoid initial manual transfer of results from statistical software to manuscript, which reduces the risk of error.
+2. If at a later stage you update the analysis files, the results reported in your manuscript are automatically also updated - this again reduces the risk of mistakes, because you don’t need to manually update figures and tables.</p>
+<p>In R Markdown syntax, <strong>code chunks</strong> have the following form (cf. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html"><em>R Markdown: The Definitive Guide</em></a>):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{coding_language chunk-label, chunk_options}</span>
+<span class="dt"># your code goes here</span>
+<span class="st">```</span></code></pre>
+<p><strong>Inline code</strong> has the form <code>`coding_language #code here`</code>.</p>
+<div id="setup-chunks-and-figure-descriptions" class="section level2">
+<h2><span class="header-section-number">3.1</span> Setup chunks and figure descriptions</h2>
+<p>The first chunk in an R Markdown document is usually used to load packages and set default chunk options, for example like so (we normally add the chunk option <code>include=FALSE</code> to not include output from this chunk in the manuscript; here we just add <code>message=FALSE</code> to suppress the message that the tidyverse package has been loaded):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">FALSE</span>, 
+  <span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>)
+<span class="co"># these options will exclude code output, </span>
+<span class="co"># messages, or warnings in knitted manuscript</span></code></pre>
+<p>In addition, version <strong>1.56</strong> of the ACM Master template adds the ability to provide descriptions of figures via the latex command <code>\Description{my description}</code>. To be able to add these descriptions easily, as well as an option to position chunks vertically, include this code in your initial setup chunk:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create additional chunk options</span>
+hook_chunk =<span class="st"> </span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;chunk&#39;</span>)
+knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">chunk =</span> <span class="cf">function</span>(x, options) {
+  txt =<span class="st"> </span><span class="kw">hook_chunk</span>(x, options)
+  <span class="co"># add chunk option &#39;vspaceout&#39; which positions </span>
+  <span class="co"># chunks vertically with \vspace</span>
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>vspaceout)) {
+    latex_vspace &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">1</span><span class="ch">\\\\</span><span class="st">vspace</span><span class="ch">\\</span><span class="st">{&quot;</span>, 
+                      options<span class="op">$</span>vspaceout, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">}&quot;</span>)
+    txt &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&#39;(</span><span class="ch">\\\\</span><span class="st">begin[^}]+})&#39;</span>, 
+                      latex_vspace, txt)  
+  }
+  <span class="co"># add chunk option &#39;description&#39; which adds </span>
+  <span class="co"># \Description{...} to figures</span>
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>description)) {
+    latex_include &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">1</span><span class="ch">\\\\</span><span class="st">Description</span><span class="ch">\\</span><span class="st">{&quot;</span>, 
+                      options<span class="op">$</span>description, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">}&quot;</span>)
+    <span class="kw">gsub</span>(<span class="st">&#39;(</span><span class="ch">\\\\</span><span class="st">includegraphics[^}]+})&#39;</span>, 
+                      latex_include, txt) 
+  } <span class="cf">else</span> {
+    <span class="kw">return</span>(txt)  <span class="co"># pass to default hook</span>
+  }
+})</code></pre>
+<p>You can then add descriptions to your figures by setting <code>description=&quot;my description&quot;</code> as a chunk option to images and plots as you will see below.</p>
+</div>
+<div id="inline-results" class="section level2">
+<h2><span class="header-section-number">3.2</span> Inline results</h2>
+<p>You might read in a made-up data set of goals scored by basketball players like so:</p>
+<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/fakeBasketData.csv&quot;</span>)</code></pre>
+<p>We can use inline code to dynamically report properties of this data set. For example, “there are a total of 270 observations of goals scored. The mean number of goals made by any player in a given game is: 17.2555556”.</p>
+</div>
+<div id="tables" class="section level2">
+<h2><span class="header-section-number">3.3</span> Tables</h2>
+<p>For tables, you could use LaTeX syntax directly. This might be useful if your table itself contains LaTeX syntax, as in Table <a href="#tab:freq"><strong>??</strong></a>.</p>
+
+<p>However, the power of writing in R Markdown is that you can read in data and automatically create corresponding LaTeX tables. The easiest way is probably to use the <a href="https://rdrr.io/cran/knitr/man/kable.html"><code>kable</code> function</a>. For example, Table <a href="dynamic-reporting.html#tab:basket-data">3.1</a> shows the first 5 rows in our basket data set.</p>
+<table>
+<caption><span id="tab:basket-data">Table 3.1: </span>The first 5 rows of some made-up basket data.</caption>
+<thead>
+<tr class="header">
+<th align="left">Player</th>
+<th align="right">goals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Carmelo Anthony</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Carmelo Anthony</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Carmelo Anthony</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">Carmelo Anthony</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Carmelo Anthony</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>You can reference Table <a href="dynamic-reporting.html#tab:basket-data">3.1</a> with <code>\@ref(tab:basket-data)</code>.</p>
+<p>You can also do arbitrary transformations and analyses of the data before creating a table, as in Table <a href="dynamic-reporting.html#tab:basket-summary">3.2</a>.</p>
+<table>
+<caption><span id="tab:basket-summary">Table 3.2: </span>Summary statistics of goals scored by top players in made-up basketball season.</caption>
+<thead>
+<tr class="header">
+<th align="left">Player</th>
+<th align="right">Total goals scored</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Blake Griffin</td>
+<td align="right">406</td>
+</tr>
+<tr class="even">
+<td align="left">Brook Lopez</td>
+<td align="right">776</td>
+</tr>
+<tr class="odd">
+<td align="left">Carmelo Anthony</td>
+<td align="right">166</td>
+</tr>
+<tr class="even">
+<td align="left">Damian Lillard</td>
+<td align="right">808</td>
+</tr>
+<tr class="odd">
+<td align="left">David Lee</td>
+<td align="right">362</td>
+</tr>
+<tr class="even">
+<td align="left">David West</td>
+<td align="right">492</td>
+</tr>
+<tr class="odd">
+<td align="left">Demar Derozan</td>
+<td align="right">972</td>
+</tr>
+<tr class="even">
+<td align="left">Deron Williams</td>
+<td align="right">365</td>
+</tr>
+<tr class="odd">
+<td align="left">Dwyane Wade</td>
+<td align="right">312</td>
+</tr>
+</tbody>
+</table>
+<p>To set a wider table, which takes up the whole width of the page’s live area, put it in a <code>\table*</code> environment by adding the parameter <code>table.env = 'table*'</code> to the <code>kable</code> function, like in Table <a href="dynamic-reporting.html#tab:basket-summary-wide">3.3</a>.</p>
+<table>
+<caption><span id="tab:basket-summary-wide">Table 3.3: </span>Bigger display of more summary statistics of goals scored by top players in made-up basketball season.</caption>
+<thead>
+<tr class="header">
+<th align="left">Player</th>
+<th align="right">Total goals scored</th>
+<th align="right">Goals per game</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Blake Griffin</td>
+<td align="right">406</td>
+<td align="right">13.533333</td>
+</tr>
+<tr class="even">
+<td align="left">Brook Lopez</td>
+<td align="right">776</td>
+<td align="right">25.866667</td>
+</tr>
+<tr class="odd">
+<td align="left">Carmelo Anthony</td>
+<td align="right">166</td>
+<td align="right">5.533333</td>
+</tr>
+<tr class="even">
+<td align="left">Damian Lillard</td>
+<td align="right">808</td>
+<td align="right">26.933333</td>
+</tr>
+<tr class="odd">
+<td align="left">David Lee</td>
+<td align="right">362</td>
+<td align="right">12.066667</td>
+</tr>
+<tr class="even">
+<td align="left">David West</td>
+<td align="right">492</td>
+<td align="right">16.400000</td>
+</tr>
+<tr class="odd">
+<td align="left">Demar Derozan</td>
+<td align="right">972</td>
+<td align="right">32.400000</td>
+</tr>
+<tr class="even">
+<td align="left">Deron Williams</td>
+<td align="right">365</td>
+<td align="right">12.166667</td>
+</tr>
+<tr class="odd">
+<td align="left">Dwyane Wade</td>
+<td align="right">312</td>
+<td align="right">10.400000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="figures" class="section level2">
+<h2><span class="header-section-number">3.4</span> Figures</h2>
+<div id="static-figures" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Static figures</h3>
+<p>Figures are similarly included via code chunks. You can include arbitrary image files, as in Figure <a href="dynamic-reporting.html#fig:static-image">3.1</a>.</p>
+<div class="figure"><span id="fig:static-image"></span>
+<img src="figures/fly.png" alt="Here's a little pretty fly."  />
+<p class="caption">
+Figure 3.1: Here’s a little pretty fly.
+</p>
+</div>
+<p>If you don’t give it a caption in the chunk options (with something like <code>fig.cap=&quot;My caption&quot;</code>), the figure does not float:</p>
+<p><img src="figures/fly.png" /><!-- --></p>
+<p>You can resize the figures with the chunk options <code>out.height</code> and <code>out.width</code>, as in Figure <a href="dynamic-reporting.html#fig:static-image-resized">3.2</a>. If you only care about LaTeX output, you can resize e.g. in inches or relative to the column width (<code>out.height = '1in'</code> or <code>out.height = '0.50\\columnwidth'</code>), but if you want to get maximum value out of R Markdown and be able to output also to html formats, set it with a percentage (<code>out.height = '50%'</code> - when outputting to PDF via LaTeX, this will be translated into <code>out.height = '.5\linewidth'</code>, see the <a href="https://bookdown.org/yihui/bookdown/figures.html">bookdown reference</a>).</p>
+
+<div class="figure"><span id="fig:static-image-resized"></span>
+<img src="figures/fly.png" alt="A sample black and white graphic that has been resized with the out.height and out.width chunk options." width="25%" height="15%" />
+<p class="caption">
+Figure 3.2: A sample black and white graphic that has been resized with the <code>out.height</code> and <code>out.width</code> chunk options.
+</p>
+</div>
+<p>If you need to style text in a caption, or include references in the caption, you have two options (see <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references">bookdown on ‘text references’</a>):</p>
+<ol style="list-style-type: decimal">
+<li><p>set the caption with the chunk option <code>fig.cap</code> and use LaTeX rather than markdown syntax. As the figure caption is a string, you must escape the LaTeX syntax’s <code>\</code> with another <code>\</code>. The caption for Figure <a href="dynamic-reporting.html#fig:static-image-resized">3.2</a> would then have been written like this: <code>fig.cap=&quot;A sample black and white graphic that has been resized with the \\texttt{out.height} and \\texttt{out.width} chunk options.&quot;</code>.</p></li>
+<li><p>write the caption in the body text with the syntax <code>(ref:chunk_label) My caption here.</code> and then refer to it in the chunk options with <code>fig.cap='(ref:chunk_label)</code> as we did for the resized fly caption.</p></li>
+</ol>
+</div>
+<div id="dynamic-figures" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Dynamic figures</h3>
+<p>Again, the power of R Markdown is that you can include e.g. plots that are dynamically generated from the underlying data. For example, Figure <a href="dynamic-reporting.html#fig:basket-plot">3.3</a> is a simple visualisation of the basket data.</p>
+<div class="figure"><span id="fig:basket-plot"></span>
+<img src="_main_files/figure-html/basket-plot-1.png" alt="Total number of goals by the top 3 players in made-up basketball season" width="98%" />
+<p class="caption">
+Figure 3.3: Total number of goals by the top 3 players in made-up basketball season
+</p>
+</div>
+<p>As with tables, you may want a figure to span two columns. To do this, set the environment to <code>figure*</code> with the chunk option <code>fig.env = 'figure*'</code>. You can fiddle around with the size and aspect ratio of the generated plot with the chunk options <code>fig.height</code> and <code>fig.width</code>. If your image is very large, you may want to restrict its width with <code>out.width</code>.</p>
+<div class="figure"><span id="fig:basket-plot-wide"></span>
+<img src="_main_files/figure-html/basket-plot-wide-1.png" alt="Distribution of goals scored by game for players in made-up basketball season" width="672" />
+<p class="caption">
+Figure 3.4: Distribution of goals scored by game for players in made-up basketball season
+</p>
+</div>
+</div>
+</div>
+<div id="math-equations" class="section level2">
+<h2><span class="header-section-number">3.5</span> Math Equations</h2>
+<p>You may want to display math equations in three distinct styles: inline, numbered or non-numbered display. Each of the three are discussed in the next sections. You can use usual LaTeX syntax directly, or <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#theorems">R Markdown</a>.</p>
+<div id="inline-in-text-equations" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Inline (In-text) Equations</h3>
+<p>A formula that appears in the running text is called an inline or in-text formula. In LaTeX it is produced by the <strong>math</strong> environment, which can be invoked by surrounding text with dollar signs: $. You can use any of the symbols and structures, from <span class="math inline">\(\alpha\)</span> to <span class="math inline">\(\omega\)</span>, available in LaTeX. For example, here’s a nice equation inline: <span class="math inline">\(\lim_{n\rightarrow \infty}x=0\)</span>. If you’re writing in RStudio, you can even hover over it to see the rendered output displayed!</p>
+</div>
+<div id="display-equations" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Display Equations</h3>
+<p>A numbered display equation—one set off by vertical space from the text and centered horizontally—is produced by using LaTeX syntax directly to put the content in an <code>equation</code> environment<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. So here’s that nice equation from above:
+<span class="math display" id="eq:display-equation">\[\begin{equation}
+\lim_{n\rightarrow \infty}x=0
+\tag{3.1}
+\end{equation}\]</span></p>
+<p>They can be assigned labels with the syntax <code>(\#eq:label)</code>. Refer to the equation with <code>\@ref(eq:display-equation)</code>, e.g. see Equation <a href="dynamic-reporting.html#eq:display-equation">(3.1)</a>.</p>
+<p>To make an unnumbered display equation, surround the expression with two dollar signs:
+<span class="math display">\[
+\lim_{n\rightarrow \infty}x=0
+\]</span></p>
+</div>
+</div>
+<div id="theorem-like-constructs" class="section level2">
+<h2><span class="header-section-number">3.6</span> Theorem-like Constructs</h2>
+<p>To create theorems, use this syntax (echo=TRUE is only necessary if you’ve set echo=FALSE as the default):</p>
+<pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="bn">```{theorem, echo=TRUE}</span>
+<span class="bn">Here is my theorem.</span>
+<span class="bn">```</span></code></pre>
+<p>For example:</p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-2" class="theorem"><strong>Theorem 3.1  </strong></span>Let <span class="math inline">\(f\)</span> be continuous on <span class="math inline">\([a,b]\)</span>. If <span class="math inline">\(G\)</span> is an antiderivative for <span class="math inline">\(f\)</span> on <span class="math inline">\([a,b]\)</span>, then</p>
+<span class="math display">\[\int^b_af(t)\,dt = G(b) - G(a).\]</span>
+</div>
+
+<p>Similarly for definitions, use the syntax</p>
+<pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="bn">```{definition}</span>
+<span class="bn">Here is my theorem.</span>
+<span class="bn">```</span></code></pre>
+<p>For example:</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-3" class="definition"><strong>Definition 3.1  </strong></span>If <span class="math inline">\(z\)</span> is irrational, then by <span class="math inline">\(e^z\)</span> we mean the unique number that has logarithm <span class="math inline">\(z\)</span>:
+<span class="math display">\[\log e^z = z.\]</span>
+</div>
+
+<p>In the ACM LaTeX template, pre-defined theorem-like constructs are <strong>theorem</strong>, <strong>conjecture</strong>, <strong>proposition</strong>, <strong>lemma</strong> and <strong>corollary</strong>. The pre-defined definition-like constructs are <strong>example</strong> and <strong>definition</strong>.</p>
+<p>Unsurprisingly, for proofs use</p>
+<pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="bn">```{proof}</span>
+<span class="bn">Here is my theorem.</span>
+<span class="bn">```</span></code></pre>
+<p>For example:</p>
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> Suppose on the contrary there exists a real number <span class="math inline">\(L\)</span> such that</p>
+<p><span class="math display">\[\lim_{x\rightarrow\infty} \frac{f(x)}{g(x)} = L.\]</span></p>
+<p>Then</p>
+<span class="math display">\[
+    l=\lim_{x\rightarrow c} f(x)
+    = \lim_{x\rightarrow c}
+    \left[ g{x} \cdot \frac{f(x)}{g(x)} \right ]
+    = \lim_{x\rightarrow c} g(x) \cdot \lim_{x\rightarrow c}
+    \frac{f(x)}{g(x)} = 0\cdot L = 0,
+\]</span>
+which contradicts our assumption that <span class="math inline">\(l\neq 0\)</span>.
+</div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>In fact, you can use any arbitrary LaTeX syntax directly in your .Rmd document.<a href="dynamic-reporting.html#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-body-of-the-paper.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
