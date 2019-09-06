@@ -1,5 +1,5 @@
 # ACM CHI Proceedings R Markdown Template
-*NOTE: This repo supplies the template that was used by CHI 2019. CHI 2020 reverted back to the template used at CHI 2018 - find the R Markdown template for that here: https://github.com/ulyngs/chi20-papers-rmarkdown*
+*NOTE: This repo supplies the template that was used by CHI 2019. CHI 2020 has reverted back to the template used at CHI 2018 - find the R Markdown template for that here: https://github.com/ulyngs/chi20-papers-rmarkdown*
 
 This R package provides a template for writing ACM CHI Proceedings papers in R Markdown, and compiling to PDF via the LaTeX templates from the ACM Master LaTeX Template (v. 1.56).
 
