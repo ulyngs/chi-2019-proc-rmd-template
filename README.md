@@ -3,6 +3,21 @@
 
 This R package provides a template for writing ACM CHI Proceedings papers in R Markdown, and compiling to PDF via the LaTeX templates from the ACM Master LaTeX Template (v. 1.56).
 
+## How to cite
+[![DOI](https://zenodo.org/badge/154396434.svg)](https://zenodo.org/badge/latestdoi/154396434)
+
+```bibtex
+@misc{lyngsChiProcRmdTemplate2018,
+  author = {Lyngs, Ulrik},
+  title = {chi-proc-rmd-template},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/ulyngs/chi-proc-rmd-template}},
+  doi = {10.5281/zenodo.3524920},
+}
+```
+
 ## Overview
 Using a tool like [R Markdown](https://rmarkdown.rstudio.com) to write scientific papers makes your work more transparent and reproducible, and reduces the risk of introducing errors by manually transfering results from statistical software to manuscript.
 
