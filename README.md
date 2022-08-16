@@ -1,4 +1,6 @@
 # ACM CHI Proceedings R Markdown Template
+**_UPDATE, 16 Aug 2022: Quarto, the successor to R Markdown, comes with an [ACM template](https://quarto.org/docs/journals/formats.html). Go and use this instead! :)_**
+
 *NOTE: This repo supplies the template that was used by CHI 2019. CHI 2020 has reverted back to the template used at CHI 2018 - find my R Markdown template for that here: https://github.com/ulyngs/chi20-papers-rmarkdown*
 
 This R package provides a template for writing ACM CHI Proceedings papers in R Markdown, and compiling to PDF via the LaTeX templates from the ACM Master LaTeX Template (v. 1.56).
